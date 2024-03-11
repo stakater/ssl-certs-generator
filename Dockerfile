@@ -1,12 +1,12 @@
 FROM alpine
 
-RUN apk --update add openssl
+RUN apk --update add bash openssl
 
 WORKDIR /certs
 
-CMD mkdir /usr/local/bin
-
 COPY generate-certs /usr/local/bin/generate-certs
+
+RUN chmod +x /usr/local/bin/generate-certs
 
 CMD /usr/local/bin/generate-certs
 
