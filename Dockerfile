@@ -1,10 +1,12 @@
-FROM stakater/base-alpine:3.5
+FROM alpine
 
-RUN apk --update add openssl
+RUN apk --update add bash openssl
 
 WORKDIR /certs
 
 COPY generate-certs /usr/local/bin/generate-certs
+
+RUN chmod +x /usr/local/bin/generate-certs
 
 CMD /usr/local/bin/generate-certs
 
